@@ -47,12 +47,6 @@ jobs:
           tags: ${{ env.IMAGE_NAME }}:latest
           target: full
 
-      # cspell: words ghaction
-      - name: Import SOPS GPG key
-        uses: crazy-max/ghaction-import-gpg@111c56156bcc6918c056dbef52164cfa583dc549 # pin@v5.2.0
-        with:
-          gpg_private_key: ${{ secrets.SOPS_GPG_PRIVATE_KEY }}
-
       - name: Lint
         run: make lint
 
