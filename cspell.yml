@@ -1,0 +1,47 @@
+dictionaries:
+  - bash
+enableFiletypes:
+  - dockercompose
+  - dotenv
+  - editorconfig
+  - ini
+  - makefile
+  - shellscript
+  - toml
+ignorePaths:
+  - .git/
+  - .gitattributes
+  - .gitignore
+  - .sops.yml
+  - cspell.yml
+  - devcontainer.json
+  - dist/
+  - Dockerfile
+  - secrets.yml
+  - .golangci.yml
+language: en
+version: "0.2"
+words:
+  - buildcache
+  - buildkit
+  - buildx
+  - devcontainer
+  - gitleaks
+  - gitlint
+  - gpgconf
+  - hadolint
+  - ifeq
+  - ifneq
+  - markdownlint
+  - shellcheck
+  - shfmt
+  - sigstore
+  - substr
+  - gostamp
+  - golang
+  - twelvelabs
+  - coverprofile
+  - golangci-lint
+  - gocovsh
+  - gomod
+  - gotest

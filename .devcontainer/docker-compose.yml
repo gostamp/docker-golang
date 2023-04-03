@@ -1,0 +1,11 @@
+---
+version: "3.7"
+
+services:
+  app:
+    entrypoint: []
+    cap_add:
+      - SYS_PTRACE # cspell: disable-line (debugger support)
+    command: sleep infinity
+    security_opt:
+      - seccomp=unconfined # cspell: disable-line (debugger support)

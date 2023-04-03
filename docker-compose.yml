@@ -1,0 +1,48 @@
+---
+version: "3.7"
+
+services:
+  app:
+    image: ${APP_DOCKER_REGISTRY}/${APP_OWNER}/${APP_NAME}-${APP_TARGET}
+    build:
+      context: .
+      target: ${APP_TARGET}
+      args:
+        # Also set as env var in the built image
+        APP_TARGET: ${APP_TARGET}
+    environment:
+      - APP_DOCKER_REGISTRY
+      - APP_ENV
+      - APP_NAME
+      - APP_OWNER
+      - APP_TAG
+      - APP_TARGET
+      - APP_USER
+      - CI
+      - GITHUB_REF_NAME
+      - GITHUB_SHA
+      - GITHUB_TOKEN
+      - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
+    extra_hosts:
+      # Allow the container to reach the host (useful in multi service/project scenarios).
+      - host.docker.internal:host-gateway
+    hostname: ${APP_NAME}-${APP_TARGET}
+    init: true
+    user: ${APP_USER}
+    volumes:
+      # Forward the SSH agent from the host OS so we can use git, ssh, etc.
+      # See https://docs.docker.com/desktop/networking/#ssh-agent-forwarding
+      - type: bind
+        source: ${DOCKER_DESKTOP_SOCK:-/run/host-services/ssh-auth.sock}
+        target: ${DOCKER_DESKTOP_SOCK:-/run/host-services/ssh-auth.sock}
+      # Persist home dir content (bash history, caches, etc).
+      - home-data:${APP_HOME}
+      # Pull in the user's gpg dir
+      - ~/.gnupg:${APP_HOME}/.gnupg
+      # Pull in the users ssh keys for git signing
+      - ~/.ssh:${APP_HOME}/.ssh
+      # And finally mount the current dir to /app.
+      - .:/app
+
+volumes:
+  home-data: {}

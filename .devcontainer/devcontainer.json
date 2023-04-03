@@ -1,0 +1,70 @@
+{
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bierner.github-markdown-preview",
+                "davidanson.vscode-markdownlint",
+                "eamodio.gitlens",
+                "editorconfig.editorconfig",
+                "exiasr.hadolint",
+                "foxundermoon.shell-format",
+                "github.vscode-github-actions",
+                "github.vscode-pull-request-github",
+                "ms-azuretools.vscode-docker",
+                "MS-SarifVSCode.sarif-viewer",
+                "redhat.vscode-yaml",
+                "streetsidesoftware.code-spell-checker",
+                "timonwong.shellcheck",
+                "golang.Go"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.rulers": [
+                    120
+                ],
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "go.coverOnSave": true,
+                "go.coverOnSingleTest": true,
+                "go.coverOnSingleTestFile": true,
+                "go.coverShowCounts": true,
+                "go.coverageDecorator": {
+                    "coveredGutterStyle": "blockgreen",
+                    "type": "gutter",
+                    "uncoveredGutterStyle": "blockred"
+                },
+                "go.diagnostic.vulncheck": "Imports",
+                "go.enableCodeLens": {
+                    "runtest": false
+                },
+                "go.generateTestsFlags": [
+                    "--template=testify"
+                ],
+                "go.lintTool": "golangci-lint",
+                "go.useLanguageServer": true,
+                "gopls": {
+                    "local": "github.com/gostamp/golang",
+                    "ui.semanticTokens": true
+                },
+                "hadolint.hadolintPath": "/usr/local/bin/hadolint",
+                "sarif-viewer.connectToGithubCodeScanning": "off",
+                "sarif-viewer.explorer.openWhenNoResults": false,
+                "shellcheck.customArgs": [
+                    "-x"
+                ],
+                "shellcheck.enable": true,
+                "shellformat.path": "/usr/local/bin/shfmt",
+                "shellformat.useEditorConfig": true
+            }
+        }
+    },
+    "dockerComposeFile": [
+        "../docker-compose.yml",
+        "docker-compose.yml"
+    ],
+    "name": "golang",
+    "remoteUser": "app",
+    "service": "app",
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/app"
+}
