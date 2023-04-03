@@ -76,8 +76,9 @@ USER app
 
 ENV PATH="${PATH}:/usr/local/go/bin:/home/app/go/bin"
 
-# Copy app source
-COPY . ${APP_DIR}
-
-ENTRYPOINT ["/app/bin/entrypoint.sh"]
-CMD ["/app/bin/run.sh"]
+#######################################################
+# APP_TARGET: slim
+#
+# A minimal image w/ just the app
+#######################################################
+FROM ghcr.io/gostamp/ubuntu-slim:0.4.0 AS slim
