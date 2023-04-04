@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ghcr.io/gostamp/golang
+  IMAGE_NAME_FULL: ghcr.io/gostamp/golang-full
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
@@ -40,11 +40,11 @@ jobs:
           context: .
           cache-from: |
             type=gha
-            type=registry,ref=${{ env.IMAGE_NAME }}:latest
-            type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
+            type=registry,ref=${{ env.IMAGE_NAME_FULL }}:latest
+            type=registry,ref=${{ env.IMAGE_NAME_FULL }}:buildcache
           cache-to: |
             type=gha
-          tags: ${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.IMAGE_NAME_FULL }}:latest
           target: full
 
       - name: Lint
