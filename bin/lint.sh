@@ -5,4 +5,5 @@ if stylist check; then
     echo "[lint] Pass ✅"
 else
     echo "[lint] Fail 🔴"
+    exit 1
 fi

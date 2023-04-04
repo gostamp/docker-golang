@@ -56,8 +56,7 @@ RUN <<EOF
 
     # Move Go tools to GOPATH and clean up
     if [ -d /tmp/gotools/bin ]; then
-        mkdir -p /home/app/go/bin
-        mv /tmp/gotools/bin/* /home/app/go/bin/
+        mv /tmp/gotools/bin/* /usr/local/bin/
     fi
     popd || exit
     rm -rf /tmp/gotools
@@ -66,9 +65,7 @@ RUN <<EOF
 
     # Install golangci-lint
     curl -fsSL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | \
-        sh -s -- -b /home/app/go/bin
-
-    chown -R app:app /home/app/go/bin
+        sh -s -- -b /usr/local/bin
 EOF
 
 # Drop down to the app user
