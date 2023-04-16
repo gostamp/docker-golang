@@ -4,7 +4,7 @@
 #
 # All of the dev/test/build tools
 #######################################################
-FROM ghcr.io/gostamp/ubuntu-full:0.4.0 AS full
+FROM ghcr.io/gostamp/ubuntu-full:0.5.0 AS full
 
 SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-c"]
 
@@ -13,11 +13,11 @@ ARG TARGETARCH
 
 RUN <<EOF
     # Install Go
-    VERSION="1.20.2"
+    VERSION="1.20.3"
     if [[ "${TARGETARCH}" == "amd64" ]]; then
-        CHECKSUM="4eaea32f59cde4dc635fbc42161031d13e1c780b87097f4b4234cfce671f1768"
+        CHECKSUM="979694c2c25c735755bf26f4f45e19e64e4811d661dd07b8c010f7a8e18adfca"
     elif [[ "${TARGETARCH}" == "arm64" ]]; then
-        CHECKSUM="78d632915bb75e9a6356a47a42625fd1a785c83a64a643fedd8f61e31b1b3bef"
+        CHECKSUM="eb186529f13f901e7a2c4438a05c2cd90d74706aaa0a888469b2a4a617b6ee54"
     else
         echo "Unknown arch: '${TARGETARCH}'!" && exit 1
     fi
@@ -78,4 +78,4 @@ ENV PATH="${PATH}:/usr/local/go/bin:/home/app/go/bin"
 #
 # A minimal image w/ just the app
 #######################################################
-FROM ghcr.io/gostamp/ubuntu-slim:0.4.0 AS slim
+FROM ghcr.io/gostamp/ubuntu-slim:0.5.0 AS slim
