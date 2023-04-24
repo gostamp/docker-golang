@@ -42,7 +42,7 @@ jobs:
 
       - name: Extract metadata for full image
         id: meta-full
-        uses: docker/metadata-action@507c2f2dc502c992ad446e3d7a5dfbe311567a96 # pin@v4.3.0
+        uses: docker/metadata-action@c4ee3adeed93b1fa6a762f209fb01608c1a22f1e # pin@v4.4.0
         with:
           images: ${{ env.IMAGE_NAME_FULL }}
           tags: |
@@ -75,7 +75,7 @@ jobs:
 
       - name: Extract metadata for slim image
         id: meta-slim
-        uses: docker/metadata-action@507c2f2dc502c992ad446e3d7a5dfbe311567a96 # pin@v4.3.0
+        uses: docker/metadata-action@c4ee3adeed93b1fa6a762f209fb01608c1a22f1e # pin@v4.4.0
         with:
           images: ${{ env.IMAGE_NAME_SLIM }}
           tags: |
